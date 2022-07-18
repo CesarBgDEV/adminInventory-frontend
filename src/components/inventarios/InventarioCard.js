@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 export const InventarioCard = (props) => {
     const {inventario} = props;
@@ -13,7 +14,7 @@ export const InventarioCard = (props) => {
                             <p className="card-text">{`Marca: ${inventario.marca.nombre}`}</p>
                             <p className="card-text">{`Empleado: ${inventario.usuario.nombre}`}</p>
                             <p className='card-text'>
-                                <a>Ver mas...</a>
+                                <Link to={`inventarios/edit/${inventario._id}`}>Ver mas...</Link>
                             </p>
                       </div>
                     </div>

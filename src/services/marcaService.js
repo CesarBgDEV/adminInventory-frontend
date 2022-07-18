@@ -6,7 +6,7 @@ import {axiosInstance} from '../helpers/axios-config';
 const getMarcas = () =>{
     return axiosInstance.get('marca',{
         headers:{
-            'Content-type' : 'aplication/json'
+            'Content-type' : 'application/json'
         }
     });
 }
@@ -16,7 +16,7 @@ const getMarcas = () =>{
 const crearMarcas = (data) =>{
     return axiosInstance.post('marca', data, {
         headers: {
-            'Content-type' : 'aplication/json'
+            'Content-type' : 'application/json'
         }
     });
 }
@@ -24,7 +24,7 @@ const crearMarcas = (data) =>{
 const editMarcas = (marcaId, data) =>{
     return axiosInstance.put(`marca/${marcaId}`,data, {
         headers: {
-            'Content-type': 'aplication/json'
+            'Content-type': 'application/json'
         }
     });
 }
