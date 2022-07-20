@@ -19,7 +19,7 @@ export const Header = () => {
                     </li>
                     <li className="nav-item">
                         <NavLink className="nav-link" 
-                            activeClassName='active' exact aria-current="page" to="/usuarios">Usuarios</NavLink>
+                            activeClassName='active' exact aria-current="page" to="/usuarios">Empleados</NavLink>
                     </li>
                     <li className="nav-item">
                         <NavLink className="nav-link" 
