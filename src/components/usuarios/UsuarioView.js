@@ -1,11 +1,13 @@
 import React,{useState, useEffect} from 'react';
 import {getUsuarios} from '../../services/usuarioService';
-import {UsuarioTable} from './UsuarioTable';
+// import {UsuarioTable} from './UsuarioTable';
+import {UsuarioNew} from './UsuarioNew';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 export const UsuarioView = () => {
   const [usuarios, setUsuarios] = useState([]);
+  const [openModal, setOpenModal] = useState(false);
 
 
   const listarUsuarios = async () =>{
@@ -28,12 +30,16 @@ export const UsuarioView = () => {
     listarUsuarios();
   },[])
 
+  const handleOpenModal = () =>{
+    setOpenModal(!openModal)
+  }
+
   return (
     <div className="container-fluid">
       <div className="row">
         <div className="col">
-            <div className="sidebar-header">
-              <h3>Nuevo Empleado</h3>
+            <div className="sidebar-header mt-2">
+              <h3>Empleados</h3>
             </div>
         </div>
       </div>
@@ -42,24 +48,7 @@ export const UsuarioView = () => {
           <hr/>
         </div>
       </div>
-      <div className="row">
-        <div className="col">
-          <div className='sidebar'>
-            <form >
-              <div className="row">
-                <div className="col">
-                  <div className="mb-3">
-                    <label className="form-label">Nombre</label>
-                    <input type="text" name="nombre" required
-                      value={nombre} onChange= {e => handleOnCHange(e)}
-                      className="form-control"/>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
+      {/* TABLA DE USARIOS */}
       <div className="col"> 
               <table className="table ">
                   <thead className=" table-dark" >
@@ -84,10 +73,9 @@ export const UsuarioView = () => {
                               <td>{usuario.fechaCreacion}</td>
                               <td>{usuario.fehcaActualizacion}</td>
                               <td>
-                                 <div>
                                     <Link to={`usuarios/edit/${usuario._id}`} type="button" className="btn btn-success">Editar</Link>
+                                    {"  "}
                                     <Link type="button" className="btn btn-danger">Eliminar</Link>
-                                  </div> 
                               </td> 
                           </tr>
                       })
@@ -97,7 +85,21 @@ export const UsuarioView = () => {
               </table>
           </div>
 
+          {
+            openModal ? <UsuarioNew
+                          handleOpenModal = {handleOpenModal}
+                          listarUsuarios = {listarUsuarios} />:
+              (<button className='btn btn-primary fab' onClick={handleOpenModal} data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <i className="fa-solid fa-plus"></i>
+              </button>)
+          }
+        
+
+
+    
+
           
     </div>
+
   )
 }

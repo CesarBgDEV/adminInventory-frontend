@@ -107,7 +107,7 @@ export const InventarioNew = ({handleOpenModal, listarInventarios}) => {
             handleOpenModal();
             listarInventarios();
         } catch (error) {
-            console.dir(error);
+            console.log(error);
             Swal.close();
             let mensaje;
             if (error && error.response && error.response.data){
