@@ -13,7 +13,7 @@ const getMarcas = () =>{
 
 //todo crear,actualizar, listar por id
 
-const crearMarcas = (data) =>{
+const crearMarca = (data) =>{
     return axiosInstance.post('marca', data, {
         headers: {
             'Content-type' : 'application/json'
@@ -30,5 +30,5 @@ const editMarcas = (marcaId, data) =>{
 }
 
 export{
-    getMarcas, crearMarcas, editMarcas
+    getMarcas, crearMarca, editMarcas
 }

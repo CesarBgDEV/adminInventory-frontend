@@ -35,11 +35,12 @@ export const UsuarioNew = ({handleOpenModal, listarUsuarios}) => {
              if(error && error.response && error.response.data){
                 mensaje = error.response.data
              }else{
-                mensaje = 'Ocurrioj un error, por favor intente de nuevo';
+                mensaje = 'Ocurrio un error, por favor intente de nuevo';
              }
 
         }
     }
+
 
 
     return (

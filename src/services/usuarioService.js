@@ -28,6 +28,15 @@ const editUsuario = (usuarioId , data) =>{
     
 }
 
+const getUsuarioPorId = (usuarioId) =>{
+    return axiosInstance.get(`usuario/${usuarioId}`,{
+        headers: {
+            'content-type' : 'application/json'
+        }
+    });
+}
+
+
 export{
-    getUsuarios,crearUsuario, editUsuario
+    getUsuarios,crearUsuario, editUsuario, getUsuarioPorId
 }

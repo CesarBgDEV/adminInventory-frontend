@@ -173,174 +173,174 @@ export const InventarioUpdate = () => {
                         <img  src={inventario?.foto} />
                     </div>
                     <div className='col-md-8'>
-                    <form onSubmit={ (e) => hadleOnSubmit(e) }>
-                        <div className='row'>
-                            <div className='col'>
-                                <div className="mb-3">
-                                    <label  className="form-label">Serial</label>
-                                    <input type="text" name='serial'
-                                        required
-                                        value={serial}
-                                        onChange= { (e) => handleOnCHange(e) }
-                                        className="form-control"   />
+                        <form onSubmit={ (e) => hadleOnSubmit(e) }>
+                            <div className='row'>
+                                <div className='col'>
+                                    <div className="mb-3">
+                                        <label  className="form-label">Serial</label>
+                                        <input type="text" name='serial'
+                                            required
+                                            value={serial}
+                                            onChange= { (e) => handleOnCHange(e) }
+                                            className="form-control"   />
+                                    </div>
                                 </div>
-                            </div>
-                            <div className='col'>
-                                <div className="mb-3">
-                                    <label  className="form-label">Modelo</label>
-                                    <input type="text" name='modelo' value={modelo} 
-                                        required
-                                        onChange= { (e) => handleOnCHange(e) }
-                                        
-                                        className="form-control"   />
-                                </div>
-                                
-                            </div>
-                            <div className='col'>
-                                <div className="mb-3">
-                                    <label  className="form-label">Descripción</label>
-                                    <input type="text" name='descripcion' value={descripcion} 
-                                        onChange= { (e) => handleOnCHange(e) } 
-                                        
-                                        className="form-control"   />
-                                </div>
-                                
-                            </div>
-                            <div className='col'>
-                                <div className="mb-3">
-                                    <label  className="form-label">Service Tag</label>
-                                    <input type="text" name='serviceTag' value={serviceTag} 
-                                        required
-                                        onChange= { (e) => handleOnCHange(e) } 
-                                        
-                                        className="form-control"   />
-                                </div>
-                                
-                            </div>
-                        </div>
-                        <div className='row'>
-                            <div className='col'>
-                            <div className="mb-3">
-                                <label  className="form-label">Activo Fijo</label>
-                                <input type="number" name='af' value={af} 
-                                    onChange= { (e) => handleOnCHange(e) } 
+                                <div className='col'>
+                                    <div className="mb-3">
+                                        <label  className="form-label">Modelo</label>
+                                        <input type="text" name='modelo' value={modelo} 
+                                            required
+                                            onChange= { (e) => handleOnCHange(e) }
+                                            
+                                            className="form-control"   />
+                                    </div>
                                     
-                                    className="form-control"   />
+                                </div>
+                                <div className='col'>
+                                    <div className="mb-3">
+                                        <label  className="form-label">Descripción</label>
+                                        <input type="text" name='descripcion' value={descripcion} 
+                                            onChange= { (e) => handleOnCHange(e) } 
+                                            
+                                            className="form-control"   />
+                                    </div>
+                                    
+                                </div>
+                                <div className='col'>
+                                    <div className="mb-3">
+                                        <label  className="form-label">Service Tag</label>
+                                        <input type="text" name='serviceTag' value={serviceTag} 
+                                            required
+                                            onChange= { (e) => handleOnCHange(e) } 
+                                            
+                                            className="form-control"   />
+                                    </div>
+                                    
+                                </div>
                             </div>
-                            </div>
-                            <div className='col'>
+                            <div className='row'>
+                                <div className='col'>
                                 <div className="mb-3">
-                                    <label  className="form-label">Foto</label>
-                                    <input type="url" name='foto' value={foto}
+                                    <label  className="form-label">Activo Fijo</label>
+                                    <input type="number" name='af' value={af} 
                                         onChange= { (e) => handleOnCHange(e) } 
                                         
                                         className="form-control"   />
                                 </div>
-                                
-                            </div>
-                            <div className='col'>
-                                <div className="mb-3">
-                                    <label  className="form-label">Fecha de Entrega</label>
-                                    <input type="date" name='fechaEntrega' value={fechaEntrega} 
-                                        required
-                                        onChange= { (e) => handleOnCHange(e) } 
-                                        
-                                        className="form-control"   />
                                 </div>
-                                
+                                <div className='col'>
+                                    <div className="mb-3">
+                                        <label  className="form-label">Foto</label>
+                                        <input type="url" name='foto' value={foto}
+                                            onChange= { (e) => handleOnCHange(e) } 
+                                            
+                                            className="form-control"   />
+                                    </div>
+                                    
+                                </div>
+                                <div className='col'>
+                                    <div className="mb-3">
+                                        <label  className="form-label">Fecha de Entrega</label>
+                                        <input type="date" name='fechaEntrega' value={fechaEntrega} 
+                                            required
+                                            onChange= { (e) => handleOnCHange(e) } 
+                                            
+                                            className="form-control"   />
+                                    </div>
+                                    
+                                </div>
+                                <div className='col'>
+                                    <div className="mb-3">
+                                        <label  className="form-label">Usuario</label>
+                                        <select className="form-select"
+                                            name='usuario'
+                                            value={usuario}
+                                            required
+                                            onChange= { (e) => handleOnCHange(e) } >
+                                            <option value= "">-- SELECCIONE --</option>
+                                            {
+                                                usuarios.map(({_id, nombre}) =>{
+                                                    return <option key={_id} value={_id}>
+                                                            {nombre}
+                                                        </option>
+                                                })
+                                            }
+
+                                        </select>
+                                    </div>
+                                    
+                                </div>
                             </div>
-                            <div className='col'>
-                                <div className="mb-3">
-                                    <label  className="form-label">Usuario</label>
-                                    <select className="form-select"
-                                        name='usuario'
-                                        value={usuario}
-                                        required
-                                        onChange= { (e) => handleOnCHange(e) } >
-                                        <option value= "">-- SELECCIONE --</option>
-                                        {
-                                            usuarios.map(({_id, nombre}) =>{
-                                                return <option key={_id} value={_id}>
+                            <div className='row'>
+                                <div className='col'>
+                                    <div className="mb-3">
+                                        <label  className="form-label">Marca</label>
+                                        <select className="form-select"
+                                            name='marca'
+                                            value={marca}
+                                            required
+                                            onChange= { (e) => handleOnCHange(e) } >
+                                            <option value="">-- SELECCIONE --</option>
+                                            {
+                                                marcas.map(({_id,nombre}) =>{
+                                                    return <option key={_id} value={_id}>
                                                         {nombre}
                                                     </option>
-                                            })
-                                        }
-
-                                    </select>
+                                                })
+                                            }
+                                        </select>
+                                    </div>
                                 </div>
-                                
-                            </div>
-                        </div>
-                        <div className='row'>
-                            <div className='col'>
-                                <div className="mb-3">
-                                    <label  className="form-label">Marca</label>
-                                    <select className="form-select"
-                                        name='marca'
-                                        value={marca}
-                                        required
-                                        onChange= { (e) => handleOnCHange(e) } >
-                                        <option value="">-- SELECCIONE --</option>
-                                        {
-                                            marcas.map(({_id,nombre}) =>{
-                                                return <option key={_id} value={_id}>
-                                                    {nombre}
-                                                </option>
-                                            })
-                                        }
-                                    </select>
+                                <div className='col'>
+                                    <div className="mb-3">
+                                        <label  className="form-label">Tipo de Equipo</label>
+                                        <select className="form-select"
+                                            name='tipo'
+                                            value={tipo}
+                                            required
+                                            onChange= { (e) => handleOnCHange(e) } >
+                                            <option value="">-- SELECCIONE --</option>
+                                            {
+                                                tipos.map(({_id, nombre}) =>{
+                                                    return <option key={_id} value={_id}>
+                                                        {nombre}
+                                                    </option>
+                                                })
+                                            }
+                                        </select>
+                                    </div>
+                                    
                                 </div>
-                            </div>
-                            <div className='col'>
-                                <div className="mb-3">
-                                    <label  className="form-label">Tipo de Equipo</label>
-                                    <select className="form-select"
-                                        name='tipo'
-                                        value={tipo}
-                                        required
-                                        onChange= { (e) => handleOnCHange(e) } >
-                                        <option value="">-- SELECCIONE --</option>
-                                        {
-                                            tipos.map(({_id, nombre}) =>{
-                                                return <option key={_id} value={_id}>
-                                                    {nombre}
-                                                </option>
-                                            })
-                                        }
-                                    </select>
-                                </div>
-                                
-                            </div>
-                            <div className='col'>
-                                <div className="mb-3">
-                                    <label  className="form-label">Estado del Equipo</label>
-                                    <select className="form-select"
-                                        name='estado'
-                                        value={estado}
-                                        required
-                                        onChange= { (e) => handleOnCHange(e) } >
-                                        <option value="">-- SELECCIONE --</option>
-                                        {
-                                            estados.map(({_id, nombre}) =>{
-                                                return <option key={_id} value={_id}>
-                                                    {nombre}
-                                                </option>
-                                            })
-                                        }
-                                    </select>
-                                </div>
-                                
-                            </div>
-                        </div>
-                        <div className='row'>
-                            <div className='col'>
-                                <div className="mb-3">
-                                    <button className="btn btn-primary">Guardar</button>
+                                <div className='col'>
+                                    <div className="mb-3">
+                                        <label  className="form-label">Estado del Equipo</label>
+                                        <select className="form-select"
+                                            name='estado'
+                                            value={estado}
+                                            required
+                                            onChange= { (e) => handleOnCHange(e) } >
+                                            <option value="">-- SELECCIONE --</option>
+                                            {
+                                                estados.map(({_id, nombre}) =>{
+                                                    return <option key={_id} value={_id}>
+                                                        {nombre}
+                                                    </option>
+                                                })
+                                            }
+                                        </select>
+                                    </div>
                                     
                                 </div>
                             </div>
-                        </div>
-                    </form>
+                            <div className='row'>
+                                <div className='col'>
+                                    <div className="mb-2">
+                                        <button className="btn btn-primary">Guardar</button>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
