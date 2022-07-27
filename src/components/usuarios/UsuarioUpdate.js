@@ -9,7 +9,7 @@ export const UsuarioUpdate = () => {
     const {nombre ='' , numero= '', puesto = '', estado = ''} = valoresForm;
 
 
-    const getUsuario = async ({}) =>{
+    const getUsuario = async () =>{
         try {
             Swal.fire({
                 allowOutsideClick: false,
@@ -39,7 +39,7 @@ export const UsuarioUpdate = () => {
         });
     }, [ usuario ]);
 
-    const handleOnCHange = ({target}) =>{
+    const handleOnCHange = ({ target }) =>{
         const {name, value} = target;
         setValoresForm({...valoresForm, [name]: value})//spread
     }
@@ -76,76 +76,52 @@ export const UsuarioUpdate = () => {
     }
 
   return (
-    <div className=' container-fluid mt-3 mb-2'>
+    <div className='container-fluid mt-3 mb-2'>
         <div className='card'>
             <div className='card-header'>
-                <h5 className='card-title'>Detalle Empleado</h5>
+                <h5 className='card-title'>Detalles de Empleados</h5>
             </div>
             <div className='card-body'>
                 <div className='row'>
                     <div className='col-md-4'>
-                        <img src= "https://www.americares.org/wp-content/uploads/xylem.gif" />
+                        <img src="https://www.americares.org/wp-content/uploads/xylem.gif"/>
                     </div>
-                    <div className='col-md-4'>
-                        <form onSubmit={ (e) => hadleOnSubmit(e) }>
+                
+                    <div className='col-md-8'>
+                        <form onSubmit= { (e) => hadleOnSubmit(e) }>
                             <div className='row'>
                                 <div className='col'>
-                                    <div className='mb-2'>
+                                    <div className='mb-3'>
+                                        <label className='form-label'>Numero</label>
+                                        <input type="text" name='numero'
+                                            required
+                                            value={numero} 
+                                            onChange= { (e) => handleOnCHange(e) }
+                                            className= "form-control" />  
+                                    </div>                          
+                                </div>
+
+                                <div className='col'>
+                                    <div className='mb-3'>
                                         <label className='form-label'>Nombre</label>
-                                        <input type="text" name="nombre"
+                                        <input type="text" name='nombre'
                                             required
-                                            value={nombre}
+                                            value={nombre} 
                                             onChange= { (e) => handleOnCHange(e) }
-                                            className="form-control" />
-                                    </div>
+                                            className= "form-control" /> 
+                                    </div>                          
                                 </div>
+
                                 <div className='col'>
-                                    <div className='mb-2'>
-                                        <label className='form-label'>Número</label>
-                                        <input type="text" name="numero"
-                                            required
-                                            value={numero}
-                                            onChange= { (e) => handleOnCHange(e) }
-                                            className="form-control" />
-                                    </div>
+                                    <div></div>
                                 </div>
-                            </div>
-                            <div className='row'>
-                                <div className='col'>
-                                    <div className='mb-2'>
-                                        <label className='form-label'>Puesto</label>
-                                        <input type="text" name="puesto"
-                                            required
-                                            value={puesto}
-                                            onChange= { (e) => handleOnCHange(e) }
-                                            className="form-control" />
-                                    </div>
-                                </div>
-                                <div className='col'>
-                                    <div className='mb-2'>
-                                        <label className='form-label'>Estado</label>
-                                        <input type="text" name="estado"
-                                            required
-                                            value={estado}
-                                            onChange= { (e) => handleOnCHange(e) }
-                                            className="form-control" />
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            <div className='row'>
-                                <div className='col'>
-                                    <div className='mb-2'>
-                                        <button className="btn btn-primary">Guardar</button>
-                                    </div>
-                                </div>
+
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-        
     </div>
   )
 }
