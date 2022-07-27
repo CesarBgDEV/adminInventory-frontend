@@ -8,6 +8,7 @@ import {TipoView} from './components/tipos/TipoView';import {} from './component
 import {UsuarioView} from './components/usuarios/UsuarioView';
 import {UsuarioUpdate} from './components/usuarios/UsuarioUpdate';
 import {InventarioUpdate} from './components/inventarios/InventarioUpdate';
+import {MarcaUpdate} from './components/marcas/MarcaUpdate';
 
 
 const App = ()=>{
@@ -21,6 +22,7 @@ const App = ()=>{
             <Route exact path = '/tipos' component = { TipoView}/>
             <Route exact path = '/inventarios/edit/:inventarioId' component= { InventarioUpdate} />
             <Route exact path = '/usuarios/edit/:usuarioId' component= {UsuarioUpdate} />
+            <Route exact path = '/marcas/edit/:marcaId' component= {MarcaUpdate} />
             <Redirect to = '/' />
             
         </Switch>
