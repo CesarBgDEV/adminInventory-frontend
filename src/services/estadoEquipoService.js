@@ -20,13 +20,21 @@ const crearEstadoEquipo = (data) =>{
 
 const editEstadoEquipo = (estadoEquipoId , data) =>{
     return axiosInstance.put(`estado-equipo/${estadoEquipoId}`, data, {
-        headers : {
+        headers: {
             'Content-type':'application/json'
         }
     });
     
 }
 
+const getEstadosEquiposPorId = (estadoEquipoId) =>{
+    return axiosInstance.get(`estado-equipo/${estadoEquipoId}`,{
+        headers: {
+            'Content-type' : 'application/json'
+        }
+    });
+}
+
 export{
-    getEstadosEquipos, crearEstadoEquipo, editEstadoEquipo
+    getEstadosEquipos, crearEstadoEquipo, editEstadoEquipo, getEstadosEquiposPorId
 }

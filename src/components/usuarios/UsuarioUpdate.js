@@ -113,9 +113,38 @@ export const UsuarioUpdate = () => {
                                 </div>
 
                                 <div className='col'>
-                                    <div></div>
+                                    <div className='mb-3'>
+                                        <label className='form-label'>Puesto</label>
+                                        <input type="text" name='puesto'
+                                            required
+                                            value={puesto}
+                                            onChange = { (e) => handleOnCHange(e) }
+                                            className= "form-control"/>
+                                    </div>
                                 </div>
 
+                            </div>
+                            <div className='row'>
+                                <div className='col'>
+                                    <div className='mb-3'>
+                                        <label className='form-label'>Estado</label>
+                                        <select className="form-select"
+                                            name='estado'
+                                            value={estado}
+                                            required
+                                            onChange = { (e) => handleOnCHange(e) }>
+                                                <option value="">-- SELECCIONE --</option>
+                                                <option value="Activo">Activo</option>
+                                                <option value="Inactivo">Inactivo</option>
+
+                                            </select>
+                                    </div>
+                                </div>
+                                <div className='col'>
+                                    <div className='mb-3 mt-4'>
+                                        <button className="btn btn-primary">Guardar</button>
+                                    </div>
+                                </div>
                             </div>
                         </form>
                     </div>
