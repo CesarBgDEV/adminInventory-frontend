@@ -27,28 +27,28 @@ export const EstadoUpdate = () => {
         }
     }
 
+
     useEffect(() =>{
         getEstadosEquipos();
-    },[ estadoEquipoId ]);
+    }, [estadoEquipoId]);
 
 
-    useEffect(() =>{
-
+    useEffect(()=>{
         setValoresForm({
             nombre: estadoEquipo.nombre,
             estado: estadoEquipo.estado,
         });
-    }, [ estadoEquipo ]);
+    },[estadoEquipo]);
 
-    const handleOnCHange = ({ target }) =>{
+    const handleOnCHange = ({target}) =>{
         const {name, value} = target;
-        setValoresForm({...valoresForm, [name]: value})//spread
+        setValoresForm({...valoresForm, [name]:value})//spread
     }
 
     const hadleOnSubmit = async (e) =>{
         e.preventDefault();
-        const estadoEquipo ={
-            nombre,estado
+        const estadoEquipo = {
+            nombre, estado
         };
         try {
             Swal.fire({
@@ -56,7 +56,7 @@ export const EstadoUpdate = () => {
                 text: 'Cargando...'
             });
             Swal.showLoading();
-            const {data} = await editEstadoEquipo(estadoEquipoId, estadoEquipo);
+            const { data } = await editEstadoEquipo(estadoEquipoId, estadoEquipo);
             Swal.close();
             console.log(data);
             
@@ -76,57 +76,58 @@ export const EstadoUpdate = () => {
   return (
     <div className='container-fluid mt-3 mb-2'>
         <div className='card'>
-                <div className='card-header'>
-                    <h5 className='card-title'>Detalle del Estado del Equipo</h5>
-                </div>
-                <div className='card-body'>
-                    <div className='row'>
-                        <div className='col-md-4'>
-                            <img src="https://www.americares.org/wp-content/uploads/xylem.gif"/>
-                        </div>
-                        <div className='col-md-8'>
-                            <form  onSubmit={ (e) => hadleOnSubmit(e)}>
-                                <div className='row'>
-                                    <div className='col'>
-                                        <div className='mb-3'>
-                                            <label className="form-label">Nombre</label>
-                                            <input type="text" name = 'nombre'
-                                                required
-                                                value={nombre}
-                                                onChange = { (e) => handleOnCHange(e) }
-                                                className="form-control"/>
-                                        </div>
+            <div className='card-header'>
+                <h5 className='card-title'>Detalle del Estado del Activo</h5>
+            </div>
+            <div className='card-body'>
+                <div className='row'>
+                    <div className='col-md-4'>
+                        <img src = "https://www.americares.org/wp-content/uploads/xylem.gif" />
+                    </div>
+                    <div className='col-md-8'>
+                        <form onSubmit= {(e) => hadleOnSubmit(e)}>
+                            <div className='row'>
+                                <div className='col'>
+                                    <div className='mb-3'>
+                                        <label className="form-label">Nombre</label> 
+                                        <input type="text" name= 'nombre' 
+                                            required
+                                            value={nombre}
+                                            onChange= { (e) => handleOnCHange(e) }
+                                            className="form-control"/>
                                     </div>
-
-                                    <div className='col'>
-                                        <div className='mb-3'>
-                                            <label className="form-label">Estado</label>
-                                            <select className="form-select"
-                                                name='estado'
-                                                value={estado}
-                                                required
-                                                onChange = { (e) => handleOnCHange(e) }>
-                                                    <option value="">-- SELECCIONE --</option>
-                                                    <option value="Activo">Activo</option>
-                                                    <option value="Inactivo">Inactivo</option>
-
-
-                                                </select>
-
-                                        </div>
-                                    </div>
-
-                                    <div className='col'>
-                                        <div className='mb-3 mt-4'>
-                                            <button className="btn btn-primary">Guardar</button>
-                                        </div>
-                                    </div>
-
                                 </div>
-                            </form>
-                        </div>
+
+                                <div className='col'>
+                                    <div className='mb-3'>
+                                        <label className="form-label">Estado</label>
+                                        <select className="form-select"
+                                            name= 'estado'
+                                            value={estado}
+                                            required
+                                            onChange = { (e) => handleOnCHange(e) }> 
+
+                                            <option value="">-- SELECCIONE --</option>
+                                            <option value="Activo">Activo</option>
+                                            <option value="Inactivo">Inactivo</option>
+                                            
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div className='col'>
+                                    <div className='mb-3 mt-4'>
+                                        <button className="btn btn-primary">Guardar</button>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </form>
                     </div>
                 </div>
+                
+            </div>
         </div>
     </div>
   )

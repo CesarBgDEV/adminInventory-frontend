@@ -18,13 +18,12 @@ const crearEstadoEquipo = (data) =>{
     
 }
 
-const editEstadoEquipo = (estadoEquipoId , data) =>{
-    return axiosInstance.put(`estado-equipo/${estadoEquipoId}`, data, {
+const editEstadoEquipo = (estadoEquipoId, data) =>{
+    return axiosInstance.put(`estado-equipo/${estadoEquipoId}`,data,{
         headers: {
-            'Content-type':'application/json'
+            'Content-type' : 'application/json'
         }
     });
-    
 }
 
 const getEstadosEquiposPorId = (estadoEquipoId) =>{

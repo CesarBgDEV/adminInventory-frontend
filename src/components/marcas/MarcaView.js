@@ -20,7 +20,7 @@ export const MarcaView = () => {
       setMarcas(data);
       Swal.close();
     } catch (error) {
-      console.log((error));
+      console.log(error);
       Swal.close();
     } 
   }
