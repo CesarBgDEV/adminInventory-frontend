@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 export const MarcaNew = ({handleOpenModal, listarMarcas}) => {
 
     const [valoresForm, setValoresForm] = useState({});
-    const {nombre= '', estado = ''} = valoresForm;
+    const [nombre= '', estado = ''] = valoresForm;
 
     const handleOnCHange = ({ target }) => {
         const{name, value} = target;
@@ -59,64 +59,64 @@ export const MarcaNew = ({handleOpenModal, listarMarcas}) => {
                     <button type="button" className="btn btn-primary">Save changes</button>
                     </div>
                 </div>
+            </div>
         </div>
-    </div>
         
-    <div className='container-fluid'>
-        <div className='row'>
-            <div className='col'>
-                <div className='sidebar-header'>
-                <h3>Nuevo Empleado</h3>
-                <i className="fa-solid fa-xmark" onClick={handleOpenModal}></i>
-                </div>
-            </div>
-        </div>
-        <div className='row'>
-            <div className='col'>
-                <hr/>
-            </div>
-        </div>
-        <form onSubmit={ (e) => hadleOnSubmit(e) }>
+        <div className='container-fluid'>
             <div className='row'>
                 <div className='col'>
-                    <div className="mb-3">
-                        <label  className="form-label">Nombre</label>
-                        <input type="text" name='nombre'
-                            required
-                            value={nombre}
-                            onChange= { (e) => handleOnCHange(e) }
-                            className="form-control"   />
-                    </div>
-                </div>
-
-
-                <div className='col'>
-                    <div className="mb-3">
-                        <label  className="form-label">Estatus</label>
-                        <select className='form-select' 
-                            name='estado'
-                            value={estado}
-                            required
-                            onChange={(e) => handleOnCHange(e)}>
-                                <option value="">-- SELECCIONE --</option>
-                                <option value="Activo">Activo</option>
-                                <option value="Inactivo">Inactivo</option>
-                        </select>
-
+                    <div className='sidebar-header'>
+                        <h3>Nueva Marca</h3>
+                        <i className="fa-solid fa-xmark" onClick={handleOpenModal}></i>
                     </div>
                 </div>
             </div>
-            
             <div className='row'>
                 <div className='col'>
-                    <div className="mb-3">
-                        <button className="btn btn-primary">Guardar</button>
-                        
-                    </div>
+                    <hr/>
                 </div>
             </div>
-        </form>
-    </div>
+            <form onSubmit={ (e) => hadleOnSubmit(e) }>
+                <div className='row'>
+                    <div className='col'>
+                        <div className="mb-3">
+                            <label  className="form-label">Nombre</label>
+                            <input type="text" name='nombre'
+                                required
+                                value={nombre}
+                                onChange= { (e) => handleOnCHange(e) }
+                                className="form-control"   />
+                        </div>
+                    </div>
+
+
+                    <div className='col'>
+                        <div className="mb-3">
+                            <label  className="form-label">Estatus</label>
+                            <select className='form-select' 
+                                name='estado'
+                                value={estado}
+                                required
+                                onChange={(e) => handleOnCHange(e)}>
+                                    <option value="">-- SELECCIONE --</option>
+                                    <option value="Activo">Activo</option>
+                                    <option value="Inactivo">Inactivo</option>
+                            </select>
+
+                        </div>
+                    </div>
+                </div>
+                
+                <div className='row'>
+                    <div className='col'>
+                        <div className="mb-3">
+                            <button className="btn btn-primary">Guardar</button>
+                            
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
   )
 }
