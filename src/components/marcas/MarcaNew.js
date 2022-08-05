@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 export const MarcaNew = ({handleOpenModal, listarMarcas}) => {
 
     const [valoresForm, setValoresForm] = useState({});
-    const [nombre= '', estado = ''] = valoresForm;
+    const {nombre= '', estado = ''} = valoresForm;
 
     const handleOnCHange = ({ target }) => {
         const{name, value} = target;
