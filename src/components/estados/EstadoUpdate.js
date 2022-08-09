@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import {useParams} from 'react-router-dom';
 import {getEstadosEquiposPorId, editEstadoEquipo} from '../../services/estadoEquipoService';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 export const EstadoUpdate = () => {
     const {estadoEquipoId = ''} = useParams();

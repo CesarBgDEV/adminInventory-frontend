@@ -6,7 +6,7 @@ export const InventarioCard = (props) => {
   return (
                 <div className="col">
                     <div className="card">
-                      <img src={inventario.foto} className="card-img-top" alt="..." />
+                      <img src={inventario.foto} className="card-img-top img-card" alt='https://www.americares.org/wp-content/uploads/xylem.gif' />
                       <div className="card-body">
                             <h5 className="card-title">Características</h5>
                             <hr />
