@@ -25,8 +25,9 @@ const App = ()=>{
             <Route exact path = '/usuarios/edit/:usuarioId' component= {UsuarioUpdate} />
             <Route exact path = '/marcas/edit/:marcaId' component= {MarcaUpdate} />
             <Route exact path = '/estados/edit/:estadoEquipoId' component= {EstadoUpdate} />
-            <Redirect to = '/tipos/edit/:tipoEquipoId' component={TipoUpdate} />
-            <Route exact path = '/'/>
+            <Route exact path = '/tipos/edit/:tipoEquipoId' component={TipoUpdate}/>
+            <Redirect to = '/' />
+            
             
         </Switch>
     </Router>
