@@ -5,11 +5,13 @@ import {
   editTipoEquipo,
 } from "../../services/tipoEquipoService";
 import Swal from "sweetalert2";
+
+
 export const TipoUpdate = () => {
-  const { tipoEquipoId = "" } = useParams();
+  const { tipoEquipoId = '' } = useParams();
   const [tipoEquipo, setTipoEquipo] = useState({});
   const [valoresForm, setValoresForm] = useState({});
-  const { nombre = "", estado = "" } = valoresForm;
+  const { nombre = '', estado = '' } = valoresForm;
 
   const getTiposEquipos = async () => {
     try {
@@ -76,7 +78,7 @@ export const TipoUpdate = () => {
     <div className="container-fluid mt-3 mb-2">
       <div className="card">
         <div className="card-header">
-          <h5 className="card-title">Detalle del Estado del Activo</h5>
+          <h5 className="card-title">Detalle del Tipo del Activo</h5>
         </div>
         <div className="card-body">
           <div className="row">
