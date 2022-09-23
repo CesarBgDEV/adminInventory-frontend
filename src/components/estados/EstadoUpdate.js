@@ -17,7 +17,7 @@ export const EstadoUpdate = () => {
                 text: 'Cargando...'
             });
             Swal.showLoading();
-            const { data } = await   (estadoEquipoId);
+            const { data } = await getEstadosEquiposPorId(estadoEquipoId);
             setEstadoEquipo(data);
             Swal.close();
             

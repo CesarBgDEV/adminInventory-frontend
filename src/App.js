@@ -11,6 +11,7 @@ import {InventarioUpdate} from './components/inventarios/InventarioUpdate';
 import {MarcaUpdate} from './components/marcas/MarcaUpdate';
 import {EstadoUpdate} from './components/estados/EstadoUpdate';
 import {TipoUpdate} from './components/tipos/TipoUpdate';
+import {ActivosEmpleado} from './components/inventarios/ActivosEmpleado';
 
 const App = ()=>{
     return <Router>
@@ -26,6 +27,7 @@ const App = ()=>{
             <Route exact path = '/marcas/edit/:marcaId' component= {MarcaUpdate} />
             <Route exact path = '/estados/edit/:estadoEquipoId' component= {EstadoUpdate} />
             <Route exact path = '/tipos/edit/:tipoEquipoId' component={TipoUpdate}/>
+            <Route exact path = '/inventarios/empleado/:usuarioId' component = {ActivosEmpleado}/>
             <Redirect to = '/' />
             
             
