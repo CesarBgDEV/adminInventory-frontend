@@ -1,13 +1,17 @@
 import React,{useState,useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import {getInventarioEmpleado, getInventarios} from '../../services/inventarioService';
+import {getEstadosEquipos} from '../../services/estadoEquipoService';
+import {getMarcas} from '../../services/marcaService';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 
 export const ActivosEmpleado = () => {
     const {usuarioId= ''} = useParams();
-    const [activos, setActivos] = useState({});
+    const [activos, setActivos] = useState([]);
+    const [estados, setEstados] = useState([]);
+    const [marcas, setMarcas] = useState([]);
     const [openModal, setOpenModal] = useState(false);
 
     const listarActivos = async ()=>{
@@ -53,16 +57,32 @@ export const ActivosEmpleado = () => {
         {/* TABLA DE ACTIVOS */}
         <div className="col">
             <table className="table">
-                <thead>
-                    <th scope="col">Descripción</th>
-                    <th scope="col">Estado</th>
-                    <th scope="col">Numero de Activo</th>
-                    <th scope="col">Marca</th>
-                    <th scope="col">Modelo</th>
-                    <th scope="col">No.Serie</th>
+                <thead className=" table-dark ">
+                    <tr>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">AF</th>
+                        <th scope="col">Marca</th>
+                        <th scope="col">Modelo</th>
+                        <th scope="col">Service tag</th>
+                    </tr>
                 </thead>
+                <tbody className="table-light">
+                    {
+                        activos.map((activo) =>{
+                            return <tr key={activo._id}>
+                                <td>{activo.descripcion}</td>
+                                <td>{activo.estadoEquipo}</td>
+                                <td>{activo.af}</td>
+                                <td>{activo.marca}</td>
+                                <td>{activo.modelo}</td>
+                                <td>{activo.serviceTag}</td>
+                            </tr>
+                        })
+                    }
+                </tbody>
             </table>
         </div>
     </div>
-  )
+    )
 }

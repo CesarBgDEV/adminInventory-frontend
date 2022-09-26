@@ -50,7 +50,7 @@ export const UsuarioView = () => {
       </div>
       {/* TABLA DE USARIOS */}
       <div className="col"> 
-              <table className="table ">
+              <table className="table">
                   <thead className=" table-dark" >
                       <tr>
                           <th scope="col">#</th>
@@ -66,7 +66,7 @@ export const UsuarioView = () => {
                     {
                       usuarios.map((usuario) =>{
                         return <tr key={usuario._id}>
-                              <th scope="row">{usuario.numero}</th>
+                              <td>{usuario.numero}</td>
                               <td>{usuario.nombre}</td>
                               <td>{usuario.puesto}</td>
                               <td>{usuario.estado}</td>
@@ -80,7 +80,7 @@ export const UsuarioView = () => {
                           </tr>
                       })
                     }
-                           
+                        
                   </tbody>
               </table>
           </div>
