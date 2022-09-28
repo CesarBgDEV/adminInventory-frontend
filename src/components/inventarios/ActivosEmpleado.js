@@ -2,7 +2,8 @@ import React,{useState,useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import {getInventarioEmpleado} from '../../services/inventarioService';
 import Swal from 'sweetalert2';
-
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 export const ActivosEmpleado = () => {
     const {usuarioId= ''} = useParams();
@@ -40,12 +41,51 @@ export const ActivosEmpleado = () => {
         }
     };
     
+
+
+
     useEffect(()=>{
         listarActivos();
     },[usuarioId])
 
     const handleOpenModal = () =>{
         setOpenModal(!openModal)
+    }
+
+
+    const descargarPDF = async () => {
+
+        const {data} = await getInventarioEmpleado(usuarioId);
+            
+            setActivos(data);
+
+
+            let nombre = ""
+            if( data.length >= 1 ){
+                nombre =  await data[0]['usuario']['nombre']
+                
+            }
+
+
+        const doc = new jsPDF()
+        doc.text("Activos de "+ nombre , 20, 10);
+
+        // doc.autotable({
+
+        //     columns: activos.map((activo)=>{
+        //         activo.descripcion,
+        //         activo.estadoEquipo,
+        //         activo.af,
+        //         activo.marca,
+        //         activo.modelo,
+        //         activo.serviceTag
+        //     })
+            
+
+        // })
+        
+
+        doc.save('Activos de '+ nombre + '.pdf')
     }
 
   return (
@@ -55,7 +95,12 @@ export const ActivosEmpleado = () => {
                 <div className="sidebar-header mt-2">
                     <h3>Activos de {nombreUsuario}</h3>
                 </div>
+
+                <div>
+                    <button className="btn btn-primary" onClick={descargarPDF}> <i className="fa-solid fa-print"></i> </button>
+                </div>
             </div>
+            
         </div>
         <div className="row">
             <div className="col">
@@ -64,7 +109,7 @@ export const ActivosEmpleado = () => {
         </div>
         {/* TABLA DE ACTIVOS */}
         <div className="col">
-            <table className="table">
+            <table className="table" id="#activosEmpleado">
                 <thead className=" table-dark ">
                     <tr>
                         <th scope="col">Descripción</th>
