@@ -1,9 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import { useParams } from 'react-router-dom';
-import {getInventarioEmpleado, getInventarios} from '../../services/inventarioService';
-import {getEstadosEquipos} from '../../services/estadoEquipoService';
-import {getMarcas} from '../../services/marcaService';
-import { Link } from 'react-router-dom';
+import {getInventarioEmpleado} from '../../services/inventarioService';
 import Swal from 'sweetalert2';
 
 
