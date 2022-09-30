@@ -34,6 +34,14 @@ const getEstadosEquiposPorId = (estadoEquipoId) =>{
     });
 }
 
+const deleteEstadoEquipo = (estadoEquipoId) => {
+    return axiosInstance.delete(`estado-equipo/${estadoEquipoId}`,{
+        headers: {
+            'Content-type' : 'application/json'
+        }
+    });
+}
+
 export{
-    getEstadosEquipos, crearEstadoEquipo, editEstadoEquipo, getEstadosEquiposPorId
+    getEstadosEquipos, crearEstadoEquipo, editEstadoEquipo, getEstadosEquiposPorId, deleteEstadoEquipo
 }

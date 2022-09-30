@@ -8,7 +8,7 @@ import 'jspdf-autotable';
 export const ActivosEmpleado = () => {
     const {usuarioId= ''} = useParams();
     const [activos, setActivos] = useState([]);
-    const [nombreUsuario, setNombreUsuario] = useState([]);
+    const [informacionUsuario, setInformacionUsuario] = useState({nombreUsuario: '', puestoUsuario: '', fechaConsulta: ''});
     const [openModal, setOpenModal] = useState(false);
 
     const listarActivos = async ()=>{
@@ -24,13 +24,22 @@ export const ActivosEmpleado = () => {
 
 
             let nombre = ""
+            let puesto = ""
+            let hoy = new Date()
+            let fecha = `${hoy.getDate()} - ${hoy.getMonth()} - ${hoy.getFullYear()}`
+
             if( data.length >= 1 ){
                 nombre =  await data[0]['usuario']['nombre']
+                puesto = await data[0]['usuario']['puesto']
                 
             }
-            setNombreUsuario(nombre)
+            setInformacionUsuario({
+                nombreUsuario: nombre,
+                puestoUsuario: puesto,
+                fechaConsulta: fecha,
+            })
             console.log(nombre);
-            console.log(nombreUsuario);
+            console.log(informacionUsuario);
             
 
             Swal.close();
@@ -53,51 +62,48 @@ export const ActivosEmpleado = () => {
     }
 
 
-    const descargarPDF = async () => {
-
-        const {data} = await getInventarioEmpleado(usuarioId);
+    // const descargarPDF = async () => {
+    //     const {data} = await getInventarioEmpleado(usuarioId);
             
-            setActivos(data);
+    //         setActivos(data);
 
 
-            let nombre = ""
-            if( data.length >= 1 ){
-                nombre =  await data[0]['usuario']['nombre']
+    //         let nombre = ""
+    //         if( data.length >= 1 ){
+    //             nombre =  await data[0]['usuario']['nombre']
                 
-            }
+    //         }
 
 
-        const doc = new jsPDF()
-        doc.text("Activos de "+ nombre , 20, 10);
-
-        // doc.autotable({
-
-        //     columns: activos.map((activo)=>{
-        //         activo.descripcion,
-        //         activo.estadoEquipo,
-        //         activo.af,
-        //         activo.marca,
-        //         activo.modelo,
-        //         activo.serviceTag
-        //     })
-            
-
-        // })
+    //     const  doc = new jsPDF()
+    //     doc.text("Activos de "+ nombre , 20, 10);
         
 
-        doc.save('Activos de '+ nombre + '.pdf')
+    //     doc.autotable({
+    //         html: '#activosEmpleado'
+    //     })
+        
+
+    //     doc.save('Activos de '+ nombre + '.pdf')
+    // }
+    
+    const descargarPDF = () =>{
+        window.print();
     }
+
+
 
   return (
     <div className="container-fluid">
         <div className="row">
             <div className="col">
                 <div className="sidebar-header mt-2">
-                    <h3>Activos de {nombreUsuario}</h3>
+                    <h3>Activos de {informacionUsuario['nombreUsuario']} <span> / Puesto: {informacionUsuario['puestoUsuario']}</span> 
+                        <span>/ Fecha: {informacionUsuario['fechaConsulta']}  </span> </h3>
                 </div>
 
                 <div>
-                    <button className="btn btn-primary" onClick={descargarPDF}> <i className="fa-solid fa-print"></i> </button>
+                    <button className="btn btn-primary" onClick={descargarPDF} id="descargar"> <i className="fa-solid fa-print"></i> </button>
                 </div>
             </div>
             
@@ -109,7 +115,7 @@ export const ActivosEmpleado = () => {
         </div>
         {/* TABLA DE ACTIVOS */}
         <div className="col">
-            <table className="table" id="#activosEmpleado">
+            <table className="table" id="activosEmpleado">
                 <thead className=" table-dark ">
                     <tr>
                         <th scope="col">Descripción</th>
@@ -135,6 +141,11 @@ export const ActivosEmpleado = () => {
                     }
                 </tbody>
             </table>
+
+            <div className='row containerFirmas' id='firmas'>
+                <span className='col container-firma-usuario'>Firma de {informacionUsuario['nombreUsuario']}</span>
+                <span className='col container-firma-usuario'>Firma del que otorga</span>
+            </div>
         </div>
     </div>
     )
