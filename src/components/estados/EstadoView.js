@@ -1,5 +1,5 @@
 import React, {useState,useEffect} from 'react';
-import {getEstadosEquipos} from '../../services/estadoEquipoService';
+import {getEstadosEquipos,deleteEstadoEquipo} from '../../services/estadoEquipoService';
 import {EstadoNew} from './EstadoNew';
 import {Link} from 'react-router-dom';
 import Swal from 'sweetalert2';
@@ -69,7 +69,7 @@ export const EstadoView = () => {
                   <td>
                     <Link to={`estados/edit/${estado._id}`} type="button" className="btn btn-success">Editar</Link>
                     {"  "}
-                    <Link type="button" className="btn btn-danger">Eliminar</Link>
+                    <Link  type="button" className="btn btn-danger">Eliminar</Link>
                   </td>
                 </tr>
               })
