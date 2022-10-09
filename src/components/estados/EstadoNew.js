@@ -26,13 +26,11 @@ export const EstadoNew = ({handleOpenModal, listarEstados}) => {
 
             Swal.showLoading();
             const {data} = await crearEstadoEquipo(marca);
-            console.log(data);
             Swal.close();
             handleOpenModal();
             listarEstados();
             
         } catch (error) {
-            console.log(error);
             Swal.close();
             let mensaje;
             if(error && error.response && error.response.data){

@@ -21,7 +21,6 @@ export const TipoView = () => {
       Swal.close();
       
     } catch (error) {
-      console.log(error);
       Swal.close();
     }
   }
@@ -69,7 +68,7 @@ export const TipoView = () => {
                   <td>
                     <Link to={`tipos/edit/${tipo._id}`} type="button" className="btn btn-success">Editar</Link>
                     {"  "}
-                    <Link type="button" className="btn btn-danger">Eliminar</Link>
+                    {/* <Link type="button" className="btn btn-danger">Eliminar</Link> */}
                   </td>
                 </tr>
               })

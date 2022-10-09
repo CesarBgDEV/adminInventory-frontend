@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 
 export const UsuarioNew = ({handleOpenModal, listarUsuarios}) => {
     const [valoresForm, setValoresForm] = useState({});
-    const {nombre='', numero='',puesto='',estado=''} = valoresForm;
+    const {nombre='', numero='',puesto='', area='', curp ='', rfc= '',estado=''} = valoresForm;
 
     const handleOnCHange =({ target }) =>{
         const {name,value} = target;
@@ -13,7 +13,7 @@ export const UsuarioNew = ({handleOpenModal, listarUsuarios}) => {
     const hadleOnSubmit = async (e) =>{
         e.preventDefault();
         const usuario = {
-            nombre, numero, puesto, estado
+            nombre, numero, puesto, area, curp, rfc, estado
         };
         try {
             Swal.fire({
@@ -23,13 +23,11 @@ export const UsuarioNew = ({handleOpenModal, listarUsuarios}) => {
 
             Swal.showLoading();
             const {data} = await crearUsuario(usuario);
-            console.log(data);
             Swal.close();
             handleOpenModal();
             listarUsuarios();
             
         } catch (error) {
-            console.log(error);
             Swal.close();
             let mensaje;
              if(error && error.response && error.response.data){
@@ -116,6 +114,41 @@ export const UsuarioNew = ({handleOpenModal, listarUsuarios}) => {
             </div>
             
             <div className='row'>
+
+                <div className='col'>
+                        <div className="mb-3">
+                            <label  className="form-label">Area</label>
+                            <input type="text" name='area'
+                                required
+                                value={area}
+                                onChange= { (e) => handleOnCHange(e) }
+                                className="form-control"   />
+                        </div>
+                </div>
+
+                <div className='col'>
+                        <div className="mb-3">
+                            <label  className="form-label">CURP</label>
+                            <input type="text" name='curp'
+                                required
+                                value={curp}
+                                onChange= { (e) => handleOnCHange(e) }
+                                className="form-control"   />
+                        </div>
+                </div>
+
+                <div className='col'>
+                        <div className="mb-3">
+                            <label  className="form-label">RFC</label>
+                            <input type="text" name='rfc'
+                                required
+                                value={rfc}
+                                onChange= { (e) => handleOnCHange(e) }
+                                className="form-control"   />
+                        </div>
+                </div>
+
+
                 <div className='col'>
                 <div className="mb-3">
                         <label  className="form-label">Estatus</label>

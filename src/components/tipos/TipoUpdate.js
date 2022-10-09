@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import {
-  getTiposPorId,
-  editTipoEquipo,
+import { getTiposPorId, editTipoEquipo,
 } from "../../services/tipoEquipoService";
 import Swal from "sweetalert2";
 
@@ -13,22 +11,20 @@ export const TipoUpdate = () => {
   const [valoresForm, setValoresForm] = useState({});
   const { nombre = '', estado = '' } = valoresForm;
 
-  const getTiposEquipos = async () => {
+  const getTiposEquipos = async () =>{
     try {
       Swal.fire({
         allowOutsideClick: false,
-        text: "Cargando...",
-      });
-      Swal.showLoading();
-      const { data } = await getTiposPorId(tipoEquipoId);
-      setTipoEquipo(data);
-      Swal.close();
-      
+        text: 'Cargando...'
+    });
+    Swal.showLoading();
+
+    const {data} = await getTiposPorId(tipoEquipoId);
+
     } catch (error) {
-      console.log(error);
       Swal.close();
     }
-  };
+  }
 
   useEffect(() => {
     getTiposEquipos();
@@ -60,9 +56,7 @@ export const TipoUpdate = () => {
       Swal.showLoading();
       const { data } = await editTipoEquipo(tipoEquipoId, tipoEquipo);
       Swal.close();
-      console.log(data);
     } catch (error) {
-      console.log(error);
       Swal.close();
       let mensaje;
       if (error & error.response && error.response.data) {

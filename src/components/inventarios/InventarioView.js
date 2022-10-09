@@ -19,7 +19,6 @@ export const InventarioView = () => {
       setInventarios(data);
       Swal.close();
     } catch (error) {
-      console.log(error);
       Swal.close();
     }
   }

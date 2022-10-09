@@ -25,13 +25,11 @@ export const TipoNew = ({handleOpenModal, listarTipos}) => {
 
             Swal.showLoading();
             const {data} = await crearTipoEquipo(tipo);
-            console.log(data);
             Swal.close();
             handleOpenModal();
             listarTipos();
             
         } catch (error) {
-            console.log(error);
             Swal.close();
             let mensaje;
             if(error && error.response && error.response.data){

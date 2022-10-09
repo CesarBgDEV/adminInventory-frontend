@@ -64,10 +64,23 @@ body{
 
 .container-firma-usuario{
     border-top: black 1px solid;
-    margin: 0 80px;
+    margin: 0 178px;
+    
 }
 
 #firmas{
+    display: none;
+}
+
+.container-leyenda{
+    border: black 1px solid;
+}
+
+.leyenda-parrafo{
+    font-size: small;
+}
+
+#leyenda{
     display: none;
 }
 
@@ -76,6 +89,10 @@ body{
         display: none;
     }
     #firmas{
+        display: flex;
+    }
+
+    #leyenda{
         display: flex;
     }
 

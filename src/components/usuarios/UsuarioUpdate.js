@@ -6,7 +6,7 @@ export const UsuarioUpdate = () => {
     const {usuarioId = ''} = useParams();
     const [usuario, setUsuario] = useState({});
     const [valoresForm, setValoresForm] = useState({});
-    const {nombre ='' , numero= '', puesto = '', estado = ''} = valoresForm;
+    const {nombre ='' , numero= '', puesto = '', area= '', curp='', rfc= '', estado = ''} = valoresForm;
 
 
     const getUsuario = async () =>{
@@ -21,7 +21,6 @@ export const UsuarioUpdate = () => {
             Swal.close();
             
         } catch (error) {
-            console.log(error);
             Swal.close();
         }
     }
@@ -35,6 +34,9 @@ export const UsuarioUpdate = () => {
             nombre: usuario.nombre,
             numero: usuario.numero,
             puesto: usuario.puesto,
+            area: usuario.area,
+            curp: usuario.curp,
+            rfc: usuario.rfc,
             estado: usuario.estado,
         });
     }, [ usuario ]);
@@ -48,7 +50,7 @@ export const UsuarioUpdate = () => {
         e.preventDefault();
 
         const usuario = {
-            nombre, numero, puesto ,estado,
+            nombre, numero, puesto, area, curp, rfc ,estado,
         };
 
         try {
@@ -59,10 +61,8 @@ export const UsuarioUpdate = () => {
             Swal.showLoading();
             const {data} = await editUsuario(usuarioId, usuario);
             Swal.close();
-            console.log(data);
             
         } catch (error) {
-            console.log(error);
             Swal.close();
             let mensaje;
             if(error && error.response && error.response.data){
@@ -125,6 +125,40 @@ export const UsuarioUpdate = () => {
 
                             </div>
                             <div className='row'>
+
+                            <div className='col'>
+                                    <div className='mb-3'>
+                                        <label className='form-label'>Area</label>
+                                        <input type="text" name='area'
+                                            required
+                                            value={area}
+                                            onChange = { (e) => handleOnCHange(e) }
+                                            className= "form-control"/>
+                                    </div>
+                                </div>
+
+                                <div className='col'>
+                                    <div className='mb-3'>
+                                        <label className='form-label'>CURP</label>
+                                        <input type="text" name='curp'
+                                            required
+                                            value={curp}
+                                            onChange = { (e) => handleOnCHange(e) }
+                                            className= "form-control"/>
+                                    </div>
+                                </div>
+
+                                <div className='col'>
+                                    <div className='mb-3'>
+                                        <label className='form-label'>RFC</label>
+                                        <input type="text" name='rfc'
+                                            required
+                                            value={rfc}
+                                            onChange = { (e) => handleOnCHange(e) }
+                                            className= "form-control"/>
+                                    </div>
+                                </div>
+
                                 <div className='col'>
                                     <div className='mb-3'>
                                         <label className='form-label'>Estado</label>

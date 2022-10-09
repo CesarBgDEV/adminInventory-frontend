@@ -12,7 +12,7 @@ export const InventarioCard = (props) => {
                             <h5 className="card-title">Características</h5>
                             <hr />
                             <p className="card-text">{`Activo Fijo: ${inventario.af}`}</p>
-                            <p className="card-text">{`Marca: ${inventario.marca.nombre}`}</p>
+                            {/* <p className="card-text">{`Marca: ${inventario.marca.nombre}`}</p> */}
                             <p className="card-text">{`Empleado: ${inventario.usuario.nombre}`}</p>
                             <p className='card-text'>
                                 <Link to={`inventarios/edit/${inventario._id}`}>Editar</Link>

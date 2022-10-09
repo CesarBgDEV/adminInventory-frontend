@@ -21,7 +21,6 @@ export const MarcaUpdate = () => {
             Swal.close();
             
         } catch (error) {
-            console.log(error);
             Swal.close();
         }
     }
@@ -57,10 +56,8 @@ export const MarcaUpdate = () => {
             Swal.showLoading();
             const {data} = await editMarca(marcaId, marca);
             Swal.close();
-            console.log(data);
             
         } catch (error) {
-            console.log(error);
             Swal.close();
             let mensaje;
             if(error && error.response && error.response.data){

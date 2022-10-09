@@ -16,7 +16,7 @@ export const InventarioUpdate = () => {
     const [marcas, setMarcas] = useState([]);
     const [tipos, setTipos] = useState([]);
     const [estados, setEstados] = useState([]);
-    const {serial = '', modelo= '', descripcion= '',serviceTag= '',af= '',
+    const {serial = '', modelo= '', descripcion= '',af= '',
         foto= '',fechaEntrega= '',usuario, marca, tipo, estado} = valoresForm;
     
 
@@ -26,7 +26,6 @@ export const InventarioUpdate = () => {
             const {data} = await getUsuarios();
             setUsuarios(data);
         } catch (error) {
-            console.log(error);
         }
     }
     useEffect( () =>{
@@ -40,7 +39,6 @@ export const InventarioUpdate = () => {
             const {data} = await getMarcas();
             setMarcas(data);
         } catch (error) {
-            console.log(error);
         }
     }
     useEffect( () =>{
@@ -54,7 +52,6 @@ export const InventarioUpdate = () => {
             const {data} = await getTiposEquipos();
             setTipos(data);
         } catch (error) {
-            console.log(error);
         }
     }
     useEffect( () =>{
@@ -68,7 +65,6 @@ export const InventarioUpdate = () => {
             const {data} = await getEstadosEquipos();
             setEstados(data);
         } catch (error) {
-            console.log(error);
         }
     }
     useEffect( () =>{
@@ -86,7 +82,6 @@ export const InventarioUpdate = () => {
             setInventario(data);
             Swal.close();
         } catch (error) {
-            console.log(error);
             Swal.close();
         }
     }
@@ -101,7 +96,6 @@ export const InventarioUpdate = () => {
             serial: inventario.serial,
             modelo: inventario.modelo,
             descripcion: inventario.descripcion,
-            serviceTag: inventario.serviceTag,
             af:inventario.af,
             foto:inventario.foto,
             fechaEntrega: inventario.fechaEntrega,
@@ -124,7 +118,7 @@ export const InventarioUpdate = () => {
     const hadleOnSubmit = async (e) =>{
         e.preventDefault();
         const inventario = {
-            serial, modelo, descripcion, serviceTag,af, foto, fechaEntrega, 
+            serial, modelo, descripcion,af, foto, fechaEntrega, 
             usuario: {
                 _id:usuario
             }, 
@@ -147,9 +141,7 @@ export const InventarioUpdate = () => {
             Swal.showLoading();
             const {data} = await editInventario(inventarioId, inventario);
             Swal.close();
-            console.log(data);
         } catch (error) {
-            console.log(error);
             Swal.close();
             let mensaje;
             if (error && error.response && error.response.data){
@@ -206,7 +198,8 @@ export const InventarioUpdate = () => {
                                     </div>
                                     
                                 </div>
-                                <div className='col'>
+                                {/* SE DEJARA DE USAR SERVICE TAG TEMPORALMENTE */}
+                                {/* <div className='col'>
                                     <div className="mb-3">
                                         <label  className="form-label">Service Tag</label>
                                         <input type="text" name='serviceTag' value={serviceTag} 
@@ -216,7 +209,7 @@ export const InventarioUpdate = () => {
                                             className="form-control"   />
                                     </div>
                                     
-                                </div>
+                                </div> */}
                             </div>
                             <div className='row'>
                                 <div className='col'>

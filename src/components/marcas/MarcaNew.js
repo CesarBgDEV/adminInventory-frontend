@@ -25,13 +25,11 @@ export const MarcaNew = ({handleOpenModal, listarMarcas}) => {
 
             Swal.showLoading();
             const {data} = await crearMarca(marca);
-            console.log(data);
             Swal.close();
             handleOpenModal();
             listarMarcas();
             
         } catch (error) {
-            console.log(error);
             Swal.close();
             let mensaje;
             if(error && error.response && error.response.data){

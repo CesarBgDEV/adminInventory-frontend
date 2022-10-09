@@ -20,7 +20,6 @@ export const MarcaView = () => {
       setMarcas(data);
       Swal.close();
     } catch (error) {
-      console.log(error);
       Swal.close();
     } 
   }
@@ -67,7 +66,7 @@ export const MarcaView = () => {
                   <td>
                     <Link to={`marcas/edit/${marca._id}`} type="button" className="btn btn-success">Editar</Link>
                     {"  "}
-                    <Link type="button" className="btn btn-danger">Eliminar</Link>
+                    {/* <Link type="button" className="btn btn-danger">Eliminar</Link> */}
                   </td>
                 </tr>
               })

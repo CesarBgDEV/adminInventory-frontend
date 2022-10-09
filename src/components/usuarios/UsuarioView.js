@@ -21,7 +21,6 @@ export const UsuarioView = () => {
       setUsuarios(data);
       Swal.close();
     } catch (error) {
-      console.log(error);
       Swal.close();
     }
   }
@@ -56,6 +55,9 @@ export const UsuarioView = () => {
                           <th scope="col">#</th>
                           <th scope="col">Nombre</th>
                           <th scope="col">Puesto</th>
+                          <th scope="col">Area</th>
+                          <th scope="col">CURP</th>
+                          <th scope="col">RFC</th>
                           <th scope="col">Estatus</th>
                           <th scope="col">Fecha de Creación</th>
                           <th scope="col">Fecha de Actualización</th>
@@ -69,13 +71,16 @@ export const UsuarioView = () => {
                               <td>{usuario.numero}</td>
                               <td>{usuario.nombre}</td>
                               <td>{usuario.puesto}</td>
+                              <td>{usuario.area}</td>
+                              <td>{usuario.curp}</td>
+                              <td>{usuario.rfc}</td>
                               <td>{usuario.estado}</td>
                               <td>{usuario.fechaCreacion}</td>
                               <td>{usuario.fehcaActualizacion}</td>
                               <td>
                                     <Link to={`usuarios/edit/${usuario._id}`} type="button" className="btn btn-success">Editar</Link>
                                     {"  "}
-                                    <Link type="button" className="btn btn-danger">Eliminar</Link>
+                                    {/* <Link type="button" className="btn btn-danger">Eliminar</Link> */}
                               </td> 
                           </tr>
                       })

@@ -22,7 +22,6 @@ export const EstadoUpdate = () => {
             Swal.close();
             
         } catch (error) {
-            console.log(error);
             Swal.close();
         }
     }
@@ -58,10 +57,8 @@ export const EstadoUpdate = () => {
             Swal.showLoading();
             const { data } = await editEstadoEquipo(estadoEquipoId, estadoEquipo);
             Swal.close();
-            console.log(data);
             
         } catch (error) {
-            console.log(error);
             Swal.close();
             let mensaje;
             if(error && error.response && error.response.data){

@@ -14,7 +14,7 @@ export const InventarioNew = ({handleOpenModal, listarInventarios}) => {
     const [tipos, setTipos] = useState([]);
     const [estados, setEstados] = useState([]);
     const [valoresForm, setValoresForm] = useState({});
-    const {serial = '', modelo= '', descripcion= '',serviceTag= '',af= '',
+    const {serial = '', modelo= '', descripcion= '',af= '',
         foto= '',fechaEntrega= '',usuario, marca, tipo, estado} = valoresForm;
 
     //USE EFFECT USARIOS
@@ -23,7 +23,6 @@ export const InventarioNew = ({handleOpenModal, listarInventarios}) => {
             const {data} = await getUsuarios();
             setUsuarios(data);
         } catch (error) {
-            console.log(error);
         }
     }
     useEffect( () =>{
@@ -37,7 +36,6 @@ export const InventarioNew = ({handleOpenModal, listarInventarios}) => {
             const {data} = await getMarcas();
             setMarcas(data);
         } catch (error) {
-            console.log(error);
         }
     }
     useEffect( () =>{
@@ -51,7 +49,6 @@ export const InventarioNew = ({handleOpenModal, listarInventarios}) => {
             const {data} = await getTiposEquipos();
             setTipos(data);
         } catch (error) {
-            console.log(error);
         }
     }
     useEffect( () =>{
@@ -65,7 +62,6 @@ export const InventarioNew = ({handleOpenModal, listarInventarios}) => {
             const {data} = await getEstadosEquipos();
             setEstados(data);
         } catch (error) {
-            console.log(error);
         }
     }
     useEffect( () =>{
@@ -80,7 +76,7 @@ export const InventarioNew = ({handleOpenModal, listarInventarios}) => {
     const hadleOnSubmit = async (e) =>{
         e.preventDefault();
         const inventario = {
-            serial, modelo, descripcion, serviceTag,af, foto, fechaEntrega, 
+            serial, modelo, descripcion,af, foto, fechaEntrega, 
             usuario: {
                 _id:usuario
             }, 
@@ -102,12 +98,10 @@ export const InventarioNew = ({handleOpenModal, listarInventarios}) => {
             
             Swal.showLoading();
             const {data} = await crearInventario(inventario);
-            console.log(data);
             Swal.close();
             handleOpenModal();
             listarInventarios();
         } catch (error) {
-            console.log(error);
             Swal.close();
             let mensaje;
             if (error && error.response && error.response.data){
@@ -169,7 +163,8 @@ export const InventarioNew = ({handleOpenModal, listarInventarios}) => {
                         </div>
                         
                     </div>
-                    <div className='col'>
+                    {/* VALOR SERVICE TAG SUSPENDIDO TEMPORALMENTE(NO ES REQUERIDO) */}
+                    {/* <div className='col'>
                         <div className="mb-3">
                             <label  className="form-label">Service Tag</label>
                             <input type="text" name='serviceTag' value={serviceTag} 
@@ -179,7 +174,7 @@ export const InventarioNew = ({handleOpenModal, listarInventarios}) => {
                                 className="form-control"   />
                         </div>
                         
-                    </div>
+                    </div> */}
                 </div>
                 <div className='row'>
                     <div className='col'>
